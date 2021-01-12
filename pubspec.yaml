@@ -1,0 +1,23 @@
+name: web_node
+version: 0.1.0
+description: A cross-platform widget for displaying DOM nodes (iframes, etc.) in Flutter
+  applications. Uses real DOM nodes in browsers and webview_flutter in Android/iOS.
+homepage: https://github.com/dint-dev/web_node
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.2.0
+  universal_html: ^1.2.3
+  webview_flutter: '>=0.3.24 <2.0.0'
+
+dev_dependencies:
+  flutter_driver:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  pedantic: ^1.9.2
