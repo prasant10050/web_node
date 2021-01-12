@@ -4,6 +4,9 @@
 # Overview
 A cross-platform package for displaying DOM trees in Flutter applications.
 
+If you are looking for a web browser widget (with navigation buttons), try our sibling package
+[web_browser](https://pub.dev/packages/web_browser).
+
 Licensed under the [Apache License 2.0](LICENSE).
 
 ## Links

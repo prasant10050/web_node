@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:universal_html/html.dart' as html;
 import 'dart:ui' as ui;
 
 import 'package:flutter/widgets.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:web_node/web_node.dart';
-
-import 'web_node.dart';
 
 class WebNodeState extends State<WebNode> {
   /// Static counter for allocating view factory IDs.
