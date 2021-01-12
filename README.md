@@ -38,7 +38,7 @@ In _pubspec.yaml_:
 ```yaml
 dependencies:
   universal_html: ^1.2.3
-  web_node: ^0.1.0
+  web_node: ^0.1.2
 ```
 
 ## 2.Display DOM nodes

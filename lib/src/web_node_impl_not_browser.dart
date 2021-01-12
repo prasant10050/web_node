@@ -12,27 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'dart:io' show Platform;
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:web_node/web_node.dart';
 import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:io' show Platform;
+
+export 'package:webview_flutter/platform_interface.dart' show WebResourceError;
 
 class WebNodeState extends State<WebNode> {
   @override
   Widget build(BuildContext context) {
     final node = widget.node;
-    final htmlSource = DomTreeSerializer(isIOS: Platform.isIOS).serialize(
+    final domTreeSerializer =
+        widget.domTreeSerializer ?? DomTreeSerializer(isIOS: Platform.isIOS);
+    final htmlSource = domTreeSerializer.serialize(
       context: context,
       node: node,
       backgroundColor: widget.backgroundColor,
     );
+    final uri = Uri.dataFromString(
+      htmlSource,
+      mimeType: 'text/html',
+    );
     return WebView(
-      initialUrl: Uri.dataFromString(
-        htmlSource,
-        mimeType: 'text/html',
-      ).toString(),
+      initialUrl: uri.toString(),
+      javascriptMode: JavascriptMode.unrestricted,
+      userAgent: widget.userAgent,
+      initialMediaPlaybackPolicy: AutoMediaPlaybackPolicy.always_allow,
+      gestureNavigationEnabled: widget.gestureNavigationEnabled,
+      onWebResourceError: widget.onWebResourceError,
     );
   }
 }

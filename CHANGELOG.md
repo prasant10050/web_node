@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Fixes issues with old Flutter versions and adds properties to WebNode.
+
 ## 0.1.1
 
 * Fixes small issues.

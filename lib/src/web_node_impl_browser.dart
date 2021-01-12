@@ -56,3 +56,5 @@ class WebNodeState extends State<WebNode> {
     super.initState();
   }
 }
+
+class WebResourceError {}
