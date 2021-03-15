@@ -56,33 +56,32 @@ export 'web_node_impl_not_browser.dart'
 /// ```
 class WebNode extends StatefulWidget {
   /// Rendered DOM node.
-  final html.Node node;
+  final html.Element node;
 
   /// Optional background color.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Optional DOM tree serializer.
-  final DomTreeSerializer domTreeSerializer;
+  final DomTreeSerializer? domTreeSerializer;
 
   /// Optional user agent string.
-  final String userAgent;
+  final String? userAgent;
 
   /// Enables/disables gesture navigation in non-browser platforms.
   /// Default is true.
   final bool gestureNavigationEnabled;
 
-  final void Function(WebResourceError error) onWebResourceError;
+  final void Function(WebResourceError error)? onWebResourceError;
 
   const WebNode({
-    @required this.node,
-    Key key,
+    required this.node,
+    Key? key,
     this.backgroundColor,
     this.domTreeSerializer,
     this.userAgent,
     this.gestureNavigationEnabled = true,
     this.onWebResourceError,
-  })  : assert(node != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   State<StatefulWidget> createState() {

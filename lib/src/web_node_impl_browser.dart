@@ -23,25 +23,27 @@ class WebNodeState extends State<WebNode> {
   static int _registeredViewFactoryCounter = 0;
 
   /// The latest node received from a widget.
-  html.Node _latestNode;
+  html.Element? _latestNode;
 
   /// HtmlElementView constructed only once.
-  Widget _htmlElementView;
+  Widget? _htmlElementView;
 
   @override
   Widget build(BuildContext context) {
-    if (_htmlElementView == null) {
+    var htmlElementView = _htmlElementView;
+    if (htmlElementView == null) {
       final htmlViewId = 'WebNode-$_registeredViewFactoryCounter';
       _registeredViewFactoryCounter++;
       ui.platformViewRegistry.registerViewFactory(htmlViewId, (int viewId) {
         // Always returns the latest node.
-        return _latestNode;
+        return _latestNode!;
       });
-      _htmlElementView = HtmlElementView(
+      htmlElementView = HtmlElementView(
         viewType: htmlViewId,
       );
+      _htmlElementView = _htmlElementView;
     }
-    return _htmlElementView;
+    return htmlElementView;
   }
 
   @override

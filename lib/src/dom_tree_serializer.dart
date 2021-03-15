@@ -23,7 +23,7 @@ class DomTreeSerializer {
   const DomTreeSerializer({this.isIOS = false});
 
   /// Flutter color --> CSS color
-  String cssColor(Color color) {
+  String? cssColor(Color? color) {
     if (color == null) {
       return null;
     }
@@ -31,7 +31,7 @@ class DomTreeSerializer {
   }
 
   /// Flutter font size --> CSS font size
-  String cssFontSize(double fontSize) {
+  String? cssFontSize(double? fontSize) {
     if (fontSize == null) {
       return null;
     }
@@ -56,7 +56,7 @@ class DomTreeSerializer {
     }
 
     // Use style information from Scaffold
-    ScaffoldState scaffoldState;
+    ScaffoldState? scaffoldState;
     try {
       scaffoldState = Scaffold.of(context);
     } catch (e) {
@@ -82,10 +82,8 @@ class DomTreeSerializer {
 
   void cssFromCupertinoThemeData(
       html.CssStyleDeclaration cssStyle, CupertinoThemeData theme) {
-    final textStyle = theme.textTheme?.textStyle;
-    if (textStyle != null) {
-      cssFromTextStyle(cssStyle, textStyle);
-    }
+    final textStyle = theme.textTheme.textStyle;
+    cssFromTextStyle(cssStyle, textStyle);
     if (cssStyle.backgroundColor == '') {
       cssStyle.backgroundColor = cssColor(
         theme.scaffoldBackgroundColor,
@@ -107,7 +105,7 @@ class DomTreeSerializer {
   }
 
   void cssFromThemeData(html.CssStyleDeclaration cssStyle, ThemeData theme) {
-    final bodyText = theme.textTheme?.bodyText2;
+    final bodyText = theme.textTheme.bodyText2;
     if (bodyText != null) {
       cssFromTextStyle(cssStyle, bodyText);
     }
@@ -125,18 +123,18 @@ class DomTreeSerializer {
   /// Otherwise the node is wrapped inside a document that is styled by calling
   /// [cssFromBuildContext].
   String serialize({
-    @required BuildContext context,
-    @required html.Node node,
-    Color backgroundColor,
+    required BuildContext context,
+    required html.Node node,
+    Color? backgroundColor,
   }) {
     // A document node?
     if (node is html.Document) {
-      return node.documentElement.outerHtml;
+      return node.documentElement!.outerHtml!;
     }
 
     // <html>...</html> element?
     if (node is html.HtmlHtmlElement) {
-      return node.outerHtml;
+      return node.outerHtml!;
     }
 
     // Wrap the node inside <body>:
@@ -162,6 +160,6 @@ class DomTreeSerializer {
     // Transfer style
     cssFromBuildContext(cssStyle, context);
 
-    return htmlElement.outerHtml;
+    return htmlElement.outerHtml!;
   }
 }

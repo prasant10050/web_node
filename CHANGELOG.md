@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Migrated to Flutter 2.
+
 ## 0.1.2
 
 * Fixes issues with old Flutter versions and adds properties to WebNode.

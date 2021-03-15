@@ -37,8 +37,8 @@ Licensed under the [Apache License 2.0](LICENSE).
 In _pubspec.yaml_:
 ```yaml
 dependencies:
-  universal_html: ^1.2.3
-  web_node: ^0.1.2
+  universal_html: ^2.0.0
+  web_node: ^0.2.0
 ```
 
 ## 2.Display DOM nodes
