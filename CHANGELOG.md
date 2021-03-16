@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Fixes a dependency constraint.
+
 ## 0.2.0
 
 * Migrated to Flutter 2.

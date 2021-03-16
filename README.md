@@ -34,11 +34,15 @@ Licensed under the [Apache License 2.0](LICENSE).
 
 # Getting started
 ## 1.Setup
-In _pubspec.yaml_:
+Your _pubspec.yaml_ should look something like:
 ```yaml
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
+
 dependencies:
-  universal_html: ^2.0.0
-  web_node: ^0.2.0
+  universal_html: ^2.0.4
+  web_node: ^0.2.1
 ```
 
 ## 2.Display DOM nodes
